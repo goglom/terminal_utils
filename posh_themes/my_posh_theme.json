@@ -1,5 +1,4 @@
 {
-  "$schema": "https://github.com/goglom/terminal_utils/blob/main/posh_themes/my_posh_theme.json",
   "blocks": [
     {
       "alignment": "left",
@@ -24,7 +23,7 @@
           "foreground": "#2d3436",
           "powerline_symbol": "\ue0b0",
           "properties": {
-            "folder_icon": " \uf07b ",
+            "folder_icon": "\uf07b",
             "home_icon": "\uf7dd",
             "style": "folder"
           },
