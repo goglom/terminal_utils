@@ -1,10 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "transient_prompt": {
-    "background": "transparent",
-    "foreground": "#ffffff",
-    "template": "{{ AAAAAAAAAAA. .Shell }}> "
-  },
+  "$schema": "https://github.com/goglom/terminal_utils/blob/main/posh_themes/my_posh_theme.json",
   "blocks": [
     {
       "alignment": "left",
