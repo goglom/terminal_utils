@@ -54,15 +54,16 @@
           "type": "svn",
           "style": "powerline",
           "background_templates": [
-            "{{ if  (gt .Working.Modified 0) }}#ffeb3b{{ end }}"
+            "{{ if .Working.Changed }}#ffeb3b{{ end }}",
+            "{{ if .Working.HasConflicts }}#e21818{{end}}"
           ],
           "powerline_symbol": "\uE0B0",
           "foreground": "#193549",
           "background": "#41d16c",
           "properties": {
-            "fetch_status": true
+            "fetch_status": false
           },
-          "template": " SVN\ue0a0{{.Branch}} r{{.BaseRev}} {{if (gt .Working.Modified 0)}}M:{{.Working.Modified}}{{end}} {{if (gt .Working.Added 0)}}A:{{.Working.Added}}{{end}} {{if (gt .Working.Deleted 0)}}D:{{.Working.Deleted}}{{end}}"
+          "template": "\ue696\ue0a0{{.Branch}} r{{.BaseRev}} {{if (gt .Working.Modified 0)}}M:{{.Working.Modified}}{{end}} {{if (gt .Working.Added 0)}}A:{{.Working.Added}}{{end}} {{if (gt .Working.Deleted 0)}}D:{{.Working.Deleted}}{{end}}"
         },
         {
           "background": "#83769c",
@@ -82,16 +83,6 @@
     {
       "alignment": "right",
       "segments": [
-        {
-          "type": "cmake",
-          "style": "diamond",
-          "powerline_symbol": "\uE0B0",
-          "leading_diamond": "\ue0b6",
-          "trailing_diamond": "\ue0b4 ",
-          "foreground": "#E8EAEE",
-          "background": "#1E9748",
-          "template": " \ue61e \ue61d cmake {{ .Full }} "
-        },
         {
           "background": "#40c4ff",
           "foreground": "#ffffff",
