@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
     {
       "alignment": "left",
@@ -8,27 +9,28 @@
           "foreground": "#ffffff",
           "leading_diamond": "\u256d\u2500\ue0b6",
           "style": "diamond",
-          "template": "\uf120 {{ .Name }} ",
+          "template": " {{ .Name }} ",
           "type": "shell"
         },
         {
           "background": "#ef5350",
           "foreground": "#FFFB38",
+          "properties": {
+            "root_icon": "\uf292"
+          },
           "style": "diamond",
-          "template": "<parentBackground>\ue0b0</> \uf292 ",
+          "template": "<parentBackground>\ue0b0</> \uf0e7 ",
           "type": "root"
         },
         {
-          "background": "#FF9248",
-          "foreground": "#2d3436",
+          "background": "#444444",
+          "foreground": "#E4E4E4",
           "powerline_symbol": "\ue0b0",
           "properties": {
-            "folder_icon": "\uf07b",
-            "home_icon": "\uf7dd",
             "style": "folder"
           },
           "style": "powerline",
-          "template": " \uf07b\uf553{{ .Path }} ",
+          "template": " {{ .Path }} ",
           "type": "path"
         },
         {
@@ -47,7 +49,7 @@
             "fetch_upstream_icon": true
           },
           "style": "powerline",
-          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<#ef5350> \uf046 {{ .Staging.String }}</>{{ end }} ",
+          "template": " {{ .HEAD }} {{ if .Working.Changed }}{{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<#ef5350> \uf046 {{ .Staging.String }}</>{{ end }} ",
           "type": "git"
         },
         {
@@ -66,16 +68,17 @@
           "template": "\ue696\ue0a0{{.Branch}} r{{.BaseRev}} {{if (gt .Working.Modified 0)}}M:{{.Working.Modified}}{{end}} {{if (gt .Working.Added 0)}}A:{{.Working.Added}}{{end}} {{if (gt .Working.Deleted 0)}}D:{{.Working.Deleted}}{{end}}"
         },
         {
-          "background": "#83769c",
+          "type": "executiontime",
+          "style": "powerline",
+          "powerline_symbol": "",
           "foreground": "#ffffff",
+          "background": "#8800dd",
+          "template": " \udb81\udd1b {{ .FormattedMs }} ",
           "properties": {
-            "style": "roundrock",
-            "threshold": 0
-          },
-          "style": "diamond",
-          "template": " \ufa1e{{ .FormattedMs }}\u2800",
-          "trailing_diamond": "\ue0b4",
-          "type": "executiontime"
+            "threshold": 500,
+            "style": "austin",
+            "always_enabled": true
+          }
         }
       ],
       "type": "prompt"
@@ -84,15 +87,26 @@
       "alignment": "right",
       "segments": [
         {
+          "background": "#303030",
+          "foreground": "#3C873A",
+          "leading_diamond": " \ue0b6",
+          "properties": {
+            "fetch_package_manager": true,
+            "npm_icon": " <#cc3a3a>\ue5fa</> ",
+            "yarn_icon": " <#348cba>\ue6a7</>"
+          },
+          "style": "diamond",
+          "template": "\ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}",
+          "trailing_diamond": "\ue0b4",
+          "type": "node"
+        },
+        {
           "background": "#40c4ff",
           "foreground": "#ffffff",
           "invert_powerline": true,
-          "leading_diamond": "\ue0b2",
-          "properties": {
-            "time_format": "_2,15:04"
-          },
+          "leading_diamond": " \ue0b6",
           "style": "diamond",
-          "template": " \uf5ef {{ .CurrentDate | date .Format }} ",
+          "template": " \ue641 {{ .CurrentDate | date .Format }} ",
           "trailing_diamond": "\ue0b4",
           "type": "time"
         }
@@ -111,12 +125,14 @@
         },
         {
           "foreground": "#e0f8ff",
-          "foreground_templates": ["{{ if gt .Code 0 }}#ef5350{{ end }}"],
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}#ef5350{{ end }}"
+          ],
           "properties": {
             "always_enabled": true
           },
           "style": "plain",
-          "template": "\ue285\ufb00 ",
+          "template": "\u276f ",
           "type": "exit"
         }
       ],
